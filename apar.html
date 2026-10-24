@@ -1,0 +1,587 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Apartamentos | SkyHome</title>
+    <meta name="description" content="Encuentra apartamentos, viviendas familiares y apartaestudios en Medellín con SkyHome. Compara precios, zonas y características.">
+
+    <link rel="stylesheet" href="/css/regreso.css">
+    <script src="/js/js.regreso/apartamentos.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <a href="/js/js.regreso/regreso.html" class="logo">
+            <span>SKYHOME</span>
+            <small>HOGARES PARA TI</small>
+        </a>
+
+        <nav class="navegacion">
+            <a href="/js/js.regreso/skyhome.html">Inicio</a>
+            <a href="/js/js.regreso/apar.html" class="activo">Apartamentos</a>
+            <a href="/js/js.regreso/bene.html">Beneficios</a>
+            <a href="/js/js.regreso/contac.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- BANNER PRINCIPAL -->
+        <section class="banner-secundario banner-apartamentos">
+            <p class="subtitulo">BIENVENIDO A SKYHOME</p>
+
+            <h1>Encuentra el hogar que estás buscando</h1>
+
+            <p>
+                Explora diferentes opciones de vivienda en Medellín.
+                Compara precios, descubre nuevos espacios y encuentra
+                un lugar que se adapte a tus necesidades.
+            </p>
+
+            <a href="#catalogo" class="boton-dorado">
+                EXPLORAR APARTAMENTOS
+            </a>
+        </section>
+
+        <!-- INTRODUCCIÓN -->
+        <section class="seccion-apartamentos">
+
+            <div class="introduccion">
+                <p class="subtitulo">ESPACIOS PARA TODOS</p>
+
+                <h2>Tu próximo hogar comienza aquí</h2>
+
+                <p>
+                    En SkyHome queremos ayudarte a encontrar una vivienda
+                    cómoda, bonita y adecuada para tu presupuesto.
+                    Por eso, reunimos opciones para familias, parejas
+                    y personas que buscan vivir de manera independiente.
+                </p>
+            </div>
+
+            <!-- INFORMACIÓN DESTACADA -->
+            <div class="resumen-apartamentos">
+                <div class="resumen-item">
+                    <span>⌂</span>
+                    <h3>Distintos espacios</h3>
+                    <p>Opciones para diferentes necesidades.</p>
+                </div>
+
+                <div class="resumen-item">
+                    <span>♡</span>
+                    <h3>Precios variados</h3>
+                    <p>Compara los valores mensuales.</p>
+                </div>
+
+                <div class="resumen-item">
+                    <span>⌖</span>
+                    <h3>Varias ubicaciones</h3>
+                    <p>Explora zonas de Medellín y alrededores.</p>
+                </div>
+            </div>
+
+            <!-- CATÁLOGO -->
+            <div id="catalogo">
+
+                <div class="introduccion">
+                    <p class="subtitulo">NUESTRO CATÁLOGO</p>
+                    <h2>Apartamentos disponibles para explorar</h2>
+                    <p>
+                        Busca por nombre o ubicación y selecciona
+                        el tipo de vivienda que prefieras.
+                    </p>
+                </div>
+
+                <!-- BUSCADOR Y FILTROS -->
+                <div class="filtros">
+                    <input
+                        type="search"
+                        id="buscarApartamento"
+                        placeholder="🔎 Buscar por nombre o zona..."
+                        aria-label="Buscar por nombre o zona"
+                    >
+
+                    <select id="filtroTipo" aria-label="Filtrar por tipo">
+                        <option value="todos">Todos los tipos</option>
+                        <option value="familiar">Vivienda familiar</option>
+                        <option value="apartamento">Apartamento</option>
+                        <option value="apartaestudio">Apartaestudio</option>
+                        <option value="pareja">Para parejas</option>
+                    </select>
+
+                    <select id="filtroPrecio" aria-label="Filtrar por precio">
+                        <option value="todos">Cualquier precio</option>
+                        <option value="700000">Hasta $700.000</option>
+                        <option value="1000000">Hasta $1.000.000</option>
+                        <option value="1200000">Hasta $1.200.000</option>
+                        <option value="1500000">Hasta $1.500.000</option>
+                    </select>
+                </div>
+
+                <p id="contadorResultados" aria-live="polite">
+                    Mostrando 8 opciones de vivienda
+                </p>
+
+                <!-- TARJETAS DE APARTAMENTOS -->
+                <div class="rejilla-apartamentos">
+
+                    <!-- 1. FAMILIAR -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="familiar"
+                        data-precio="1200000"
+                        data-busqueda="apartamento familiar laureles medellin amplio">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+                            alt="Sala amplia de apartamento familiar"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">LAURELES · MEDELLÍN</p>
+                            <h3>Apartamento familiar</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Ideal para familias que buscan comodidad,
+                                buena iluminación y espacios para compartir.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 2 habitaciones</span>
+                                <span>🚿 1 baño</span>
+                                <span>📐 58 m² aprox.</span>
+                                <span>🍳 Cocina</span>
+                            </div>
+
+                            <p class="precio">
+                                $1.200.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Una opción para quienes necesitan
+                                espacios cómodos para su familia.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/detalle.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 2. MODERNO -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="apartamento"
+                        data-precio="950000"
+                        data-busqueda="apartamento moderno belen medellin iluminado">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
+                            alt="Interior de apartamento moderno"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">BELÉN · MEDELLÍN</p>
+                            <h3>Apartamento moderno</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Un espacio de estilo moderno con ambientes
+                                agradables para descansar y compartir.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 2 habitaciones</span>
+                                <span>🚿 2 baños</span>
+                                <span>📐 62 m² aprox.</span>
+                                <span>🪟 Buena iluminación</span>
+                            </div>
+
+                            <p class="precio">
+                                $950.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Para quienes buscan comodidad y un diseño actual.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/contac.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 3. APARTAESTUDIO -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="apartaestudio"
+                        data-precio="680000"
+                        data-busqueda="apartaestudio centro medellin economico pequeño">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1000&q=85"
+                            alt="Espacio acogedor para vivir"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">CENTRO · MEDELLÍN</p>
+                            <h3>Apartaestudio acogedor</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Una alternativa práctica para una persona
+                                que desea tener su propio espacio.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 1 habitación</span>
+                                <span>🚿 1 baño</span>
+                                <span>📐 30 m² aprox.</span>
+                                <span>🏠 Espacio compacto</span>
+                            </div>
+
+                            <p class="precio">
+                                $680.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Una alternativa económica para comenzar
+                                a vivir de forma independiente.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/contac.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 4. LUMINOSO -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="apartamento"
+                        data-precio="1100000"
+                        data-busqueda="apartamento luminoso envigado tranquilo amplio">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1000&q=85"
+                            alt="Interior luminoso de vivienda"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">ENVIGADO · ÁREA METROPOLITANA</p>
+                            <h3>Apartamento luminoso</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Ambientes agradables para organizar
+                                tu vida diaria y descansar.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 2 habitaciones</span>
+                                <span>🚿 1 baño</span>
+                                <span>📐 55 m² aprox.</span>
+                                <span>🛋 Sala independiente</span>
+                            </div>
+
+                            <p class="precio">
+                                $1.100.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Para quienes prefieren una vivienda
+                                con espacios bien distribuidos.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/contac.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 5. ECONÓMICO -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="apartamento"
+                        data-precio="720000"
+                        data-busqueda="apartamento economico robledo medellin pequeño">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1000&q=85"
+                            alt="Sala sencilla y acogedora"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">ROBLEDO · MEDELLÍN</p>
+                            <h3>Apartamento económico</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Una opción sencilla para quienes priorizan
+                                el presupuesto y los espacios funcionales.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 2 habitaciones</span>
+                                <span>🚿 1 baño</span>
+                                <span>📐 42 m² aprox.</span>
+                                <span>🍽 Zona de cocina</span>
+                            </div>
+
+                            <p class="precio">
+                                $720.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Pensado para personas que buscan
+                                una vivienda práctica.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/contac.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 6. PARA PAREJAS -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="pareja"
+                        data-precio="850000"
+                        data-busqueda="apartamento pareja floresta medellin acogedor">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=1000&q=85"
+                            alt="Sala acogedora para una pareja"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">LA FLORESTA · MEDELLÍN</p>
+                            <h3>Vivienda para parejas</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Un ambiente cómodo para compartir
+                                y construir una vida en pareja.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 1 habitación</span>
+                                <span>🚿 1 baño</span>
+                                <span>📐 38 m² aprox.</span>
+                                <span>🛋 Sala y cocina</span>
+                            </div>
+
+                            <p class="precio">
+                                $850.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Una alternativa para quienes desean
+                                un hogar fácil de organizar.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/contac.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 7. FAMILIAR AMPLIO -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="familiar"
+                        data-precio="1450000"
+                        data-busqueda="apartamento familiar castilla medellin amplio grande">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=1000&q=85"
+                            alt="Vivienda amplia con sala y comedor"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">CASTILLA · MEDELLÍN</p>
+                            <h3>Apartamento familiar amplio</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Una vivienda con varios espacios para
+                                compartir, descansar y estudiar.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 3 habitaciones</span>
+                                <span>🚿 2 baños</span>
+                                <span>📐 75 m² aprox.</span>
+                                <span>🍽 Sala-comedor</span>
+                            </div>
+
+                            <p class="precio">
+                                $1.450.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Para familias que necesitan más
+                                habitaciones y espacio.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/contac.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- 8. APARTAESTUDIO MODERNO -->
+                    <article class="tarjeta-apartamento"
+                        data-tipo="apartaestudio"
+                        data-precio="750000"
+                        data-busqueda="apartaestudio buenos aires medellin independiente moderno">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85"
+                            alt="Interior moderno y funcional"
+                            loading="lazy"
+                        >
+
+                        <div class="contenido-tarjeta">
+                            <p class="subtitulo">BUENOS AIRES · MEDELLÍN</p>
+                            <h3>Apartaestudio moderno</h3>
+
+                            <p class="descripcion-tarjeta">
+                                Un espacio funcional para estudiantes,
+                                trabajadores o personas independientes.
+                            </p>
+
+                            <div class="detalles">
+                                <span>🛏 1 habitación</span>
+                                <span>🚿 1 baño</span>
+                                <span>📐 32 m² aprox.</span>
+                                <span>🍳 Cocina integrada</span>
+                            </div>
+
+                            <p class="precio">
+                                $750.000 <small>/ mes</small>
+                            </p>
+
+                            <p class="nota-apartamento">
+                                Una opción compacta que aprovecha
+                                bien cada espacio.
+                            </p>
+
+                            <a class="boton-borde"
+                               href="/js/js.regreso/contac.html">
+                                CONSULTAR DISPONIBILIDAD
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+
+                <p id="sinResultados" class="sin-resultados" hidden>
+                    No encontramos viviendas con esos filtros.
+                    Prueba con otro nombre, barrio o precio.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- INFORMACIÓN IMPORTANTE -->
+        <section class="sobre-nosotros">
+            <p class="subtitulo">TE ACOMPAÑAMOS</p>
+
+            <h2>¿No sabes cuál apartamento elegir?</h2>
+
+            <p class="descripcion">
+                En SkyHome puedes comparar las características de cada
+                vivienda y consultar información antes de tomar una
+                decisión. Pregunta por el precio, los requisitos de
+                arriendo, los servicios incluidos y la disponibilidad.
+            </p>
+
+            <a href="/js/js.regreso/contac.html" class="boton-dorado">
+                CONTACTAR A SKYHOME
+            </a>
+        </section>
+
+        <!-- RECOMENDACIONES -->
+        <section class="seccion-apartamentos">
+            <div class="introduccion">
+                <p class="subtitulo">ANTES DE ELEGIR</p>
+                <h2>¿Qué debes tener en cuenta?</h2>
+            </div>
+
+            <div class="consejos-apartamentos">
+                <article>
+                    <h3>💰 Tu presupuesto</h3>
+                    <p>
+                        Calcula cuánto puedes pagar mensualmente
+                        sin descuidar tus otros gastos.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>📍 La ubicación</h3>
+                    <p>
+                        Revisa la cercanía al transporte público,
+                        al estudio o al trabajo.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>🏠 Las características</h3>
+                    <p>
+                        Comprueba el número de habitaciones, los baños,
+                        el tamaño y las condiciones de la vivienda.
+                    </p>
+                </article>
+
+                <article>
+                    <h3>📋 Los requisitos</h3>
+                    <p>
+                        Consulta el contrato, los servicios incluidos,
+                        el depósito y los requisitos del arrendador.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+        <a href="/js/js.regreso/regreso.html" class="logo logo-pie">
+            <span>SKYHOME</span>
+            <small>HOGARES PARA TI</small>
+        </a>
+
+        <p>Encuentra tu espacio. Construye tu hogar.</p>
+
+        <p>
+            <a href="/js/js.regreso/apar.html">Apartamentos</a> |
+            <a href="/js/js.regreso/bene.html">Beneficios</a> |
+            <a href="/js/js.regreso/contac.html">Contacto</a>
+        </p>
+
+        <p>© 2026 SkyHome</p>
+        <p>Los precios y características son ilustrativos y deben verificarse.</p>
+    </footer>
+
+    <!-- WHATSAPP -->
+    <a
+        href="https://wa.me/573000000000"
+        class="whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contactar por WhatsApp"
+    >
+        <span>✆</span> WhatsApp
+    </a>
+
+</body>
+</html>

@@ -1,0 +1,544 @@
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    // ===== BUSCADOR DE APARTAMENTOS =====
+
+    const buscador = document.getElementById("buscarApartamento");
+    const filtroTipo = document.getElementById("filtroTipo");
+    const tarjetas = document.querySelectorAll(".tarjeta-apartamento");
+    const sinResultados = document.getElementById("sinResultados");
+
+    function normalizar(texto) {
+        return texto
+            .toLowerCase()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .trim();
+    }
+
+    function filtrarApartamentos() {
+        if (!buscador) return;
+
+        const texto = normalizar(buscador.value);
+        const tipoSeleccionado = filtroTipo
+            ? filtroTipo.value
+            : "todos";
+
+        let encontrados = 0;
+
+        tarjetas.forEach((tarjeta) => {
+            // Busca tanto en el texto visible como en las palabras
+            // adicionales del atributo data-busqueda.
+            const textoTarjeta = normalizar(
+                tarjeta.innerText + " " +
+                (tarjeta.dataset.busqueda || "")
+            );
+
+            const tipo = tarjeta.dataset.tipo || "";
+            const coincideTexto = textoTarjeta.includes(texto);
+            const coincideTipo =
+                tipoSeleccionado === "todos" ||
+                tipo === tipoSeleccionado;
+
+            const mostrar = coincideTexto && coincideTipo;
+
+            tarjeta.hidden = !mostrar;
+
+            if (mostrar) encontrados++;
+        });
+
+        if (sinResultados) {
+            sinResultados.hidden = encontrados > 0;
+        }
+    }
+
+    if (buscador) {
+        buscador.addEventListener("input", filtrarApartamentos);
+    }
+
+    if (filtroTipo) {
+        filtroTipo.addEventListener("change", filtrarApartamentos);
+    }
+
+    // ===== FORMULARIO DE CONTACTO =====
+
+    const formularioContacto =
+        document.getElementById("formContacto");
+
+    if (formularioContacto) {
+        formularioContacto.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+
+            const nombre =
+                document.getElementById("nombre").value.trim();
+
+            const correo =
+                document.getElementById("correo").value.trim();
+
+            const mensaje =
+                document.getElementById("mensaje").value.trim();
+
+            const respuesta =
+                document.getElementById("respuestaContacto");
+
+            if (!nombre || !correo || !mensaje) return;
+
+            const texto =
+                "Hola, SkyHome.\n" +
+                "Mi nombre es: " + nombre + "\n" +
+                "Mi correo: " + correo + "\n" +
+                "Mi consulta: " + mensaje;
+
+            abrirWhatsApp(texto);
+
+            if (respuesta) {
+                respuesta.textContent =
+                    "Se abrió WhatsApp con tu mensaje. Envíalo para completar el contacto.";
+            }
+        });
+    }
+
+    // ===== FORMULARIO DE RESERVAS =====
+
+    const formularioReserva =
+        document.getElementById("formReserva");
+
+    const entrada = document.getElementById("fechaEntrada");
+    const salida = document.getElementById("fechaSalida");
+
+    // Evita seleccionar fechas anteriores a hoy.
+    function fechaLocalActual() {
+        const hoy = new Date();
+        const anio = hoy.getFullYear();
+        const mes = String(hoy.getMonth() + 1).padStart(2, "0");
+        const dia = String(hoy.getDate()).padStart(2, "0");
+
+        return `${anio}-${mes}-${dia}`;
+    }
+
+    if (entrada && salida) {
+        entrada.min = fechaLocalActual();
+        salida.min = entrada.min;
+
+        entrada.addEventListener("change", () => {
+            salida.min = entrada.value || fechaLocalActual();
+
+            if (salida.value && salida.value <= entrada.value) {
+                salida.value = "";
+            }
+        });
+    }
+
+    if (formularioReserva) {
+        formularioReserva.addEventListener("submit", (evento) => {
+            evento.preventDefault();
+
+            const nombre =
+                document.getElementById("nombreReserva").value.trim();
+
+            const apartamento =
+                document.getElementById("apartamentoReserva").value;
+
+            const fechaEntrada =
+                document.getElementById("fechaEntrada").value;
+
+            const fechaSalida =
+                document.getElementById("fechaSalida").value;
+
+            const personas =
+                document.getElementById("personasReserva").value;
+
+            const telefono =
+                document.getElementById("telefonoReserva").value.trim();
+
+            const respuesta =
+                document.getElementById("respuestaReserva");
+
+            if (fechaEntrada < fechaLocalActual()) {
+                respuesta.textContent =
+                    "Selecciona una fecha de entrada válida.";
+                return;
+            }
+
+            if (fechaSalida <= fechaEntrada) {
+                respuesta.textContent =
+                    "La fecha de salida debe ser posterior a la entrada.";
+                return;
+            }
+
+            const texto =
+                "Hola, SkyHome. Quiero consultar una reserva.\n\n" +
+                "Nombre: " + nombre + "\n" +
+                "Apartamento: " + apartamento + "\n" +
+                "Entrada: " + fechaEntrada + "\n" +
+                "Salida: " + fechaSalida + "\n" +
+                "Personas: " + personas + "\n" +
+                "Teléfono: " + telefono + "\n\n" +
+                "Por favor, confirmen si hay disponibilidad.";
+
+            abrirWhatsApp(texto);
+
+            respuesta.textContent =
+                "Se abrió WhatsApp con tu solicitud. Envíala para consultar la disponibilidad.";
+        });
+    }
+
+    // ===== ABRIR WHATSAPP =====
+
+    function abrirWhatsApp(mensaje) {
+        // Cambia este número por el número real de SkyHome.
+        const numero = "573000000000";
+
+        const url =
+            "https://wa.me/" + numero +
+            "?text=" + encodeURIComponent(mensaje);
+
+        window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+/* =========================================
+   SKYHOME - DETALLE DE LOS APARTAMENTOS
+   ========================================= */
+
+const apartamentos = {
+    1: {
+        nombre: "Apartamento familiar en Laureles",
+        zona: "Laureles, Medellín",
+        tipo: "Familiar",
+        precio: 1200000,
+        habitaciones: 2,
+        banos: 1,
+        area: 58,
+        sala: "Sala con espacio para sofá, mesa auxiliar y televisor.",
+        comedor: "Espacio para colocar una mesa de comedor.",
+        cocina: "Cocina con mesón y espacio para preparar alimentos.",
+        ropas: "Zona de ropas; distribución por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartamento pensado para una familia pequeña, con espacios para descansar, cocinar y compartir.",
+        imagen: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    2: {
+        nombre: "Apartamento moderno en Belén",
+        zona: "Belén, Medellín",
+        tipo: "Apartamento",
+        precio: 950000,
+        habitaciones: 2,
+        banos: 2,
+        area: 62,
+        sala: "Sala para descansar y compartir en familia.",
+        comedor: "Espacio integrado para organizar el comedor.",
+        cocina: "Cocina con espacio para preparar alimentos.",
+        ropas: "Zona para lavar y secar ropa; detalles por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Vivienda de dos habitaciones y dos baños, adecuada para una pareja o una familia pequeña.",
+        imagen: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    3: {
+        nombre: "Apartaestudio en el Centro",
+        zona: "Centro, Medellín",
+        tipo: "Apartaestudio",
+        precio: 680000,
+        habitaciones: 1,
+        banos: 1,
+        area: 30,
+        sala: "Espacio compacto para descansar.",
+        comedor: "Puede integrarse con el espacio principal.",
+        cocina: "Cocina compacta para las actividades diarias.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartaestudio de tamaño práctico para una persona que busca una vivienda funcional.",
+        imagen: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    4: {
+        nombre: "Apartamento en Envigado",
+        zona: "Envigado, Antioquia",
+        tipo: "Familiar",
+        precio: 1100000,
+        habitaciones: 2,
+        banos: 1,
+        area: 55,
+        sala: "Sala para descansar y recibir visitas.",
+        comedor: "Espacio para una mesa de comedor.",
+        cocina: "Cocina funcional para preparar alimentos.",
+        ropas: "Distribución de la zona de ropas por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartamento con dos habitaciones y espacios para las actividades cotidianas del hogar.",
+        imagen: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    5: {
+        nombre: "Apartamento económico en Robledo",
+        zona: "Robledo, Medellín",
+        tipo: "Familiar",
+        precio: 720000,
+        habitaciones: 2,
+        banos: 1,
+        area: 42,
+        sala: "Sala sencilla para descansar.",
+        comedor: "Espacio para un comedor pequeño.",
+        cocina: "Cocina básica para preparar las comidas.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Opción de vivienda económica con dos habitaciones para quienes buscan cuidar su presupuesto.",
+        imagen: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    6: {
+        nombre: "Apartamento para dos personas",
+        zona: "La Floresta, Medellín",
+        tipo: "Dos personas",
+        precio: 850000,
+        habitaciones: 1,
+        banos: 1,
+        area: 38,
+        sala: "Espacio para sofá y zona de descanso.",
+        comedor: "Lugar para una mesa pequeña.",
+        cocina: "Cocina funcional.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Vivienda compacta para una pareja o una persona que necesita un espacio cómodo.",
+        imagen: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    7: {
+        nombre: "Apartamento familiar en Castilla",
+        zona: "Castilla, Medellín",
+        tipo: "Familiar",
+        precio: 1450000,
+        habitaciones: 3,
+        banos: 2,
+        area: 75,
+        sala: "Sala con espacio para compartir en familia.",
+        comedor: "Espacio para un comedor familiar.",
+        cocina: "Cocina con área de preparación de alimentos.",
+        ropas: "Distribución de la zona de ropas por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartamento con tres habitaciones y dos baños, pensado para una familia que necesita más espacio.",
+        imagen: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    8: {
+        nombre: "Apartaestudio en Buenos Aires",
+        zona: "Buenos Aires, Medellín",
+        tipo: "Apartaestudio",
+        precio: 750000,
+        habitaciones: 1,
+        banos: 1,
+        area: 32,
+        sala: "Espacio integrado para descansar.",
+        comedor: "Zona pequeña para comer.",
+        cocina: "Cocina compacta.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartaestudio práctico para una persona o una pareja que busca un lugar funcional.",
+        imagen: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85"
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const contenedor = document.getElementById("detalleApartamento");
+
+    if (!contenedor) {
+        return;
+    }
+
+    const parametros = new URLSearchParams(window.location.search);
+    const id = parametros.get("id");
+    const apartamento = apartamentos[id];
+
+
+});
+/* =========================================
+   SKYHOME - DETALLE DE LOS APARTAMENTOS
+   ========================================= */
+
+const apartamentos = {
+    1: {
+        nombre: "Apartamento familiar en Laureles",
+        zona: "Laureles, Medellín",
+        tipo: "Familiar",
+        precio: 1200000,
+        habitaciones: 2,
+        banos: 1,
+        area: 58,
+        sala: "Sala con espacio para sofá, mesa auxiliar y televisor.",
+        comedor: "Espacio para colocar una mesa de comedor.",
+        cocina: "Cocina con mesón y espacio para preparar alimentos.",
+        ropas: "Zona de ropas; distribución por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartamento pensado para una familia pequeña, con espacios para descansar, cocinar y compartir.",
+        imagen: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    2: {
+        nombre: "Apartamento moderno en Belén",
+        zona: "Belén, Medellín",
+        tipo: "Apartamento",
+        precio: 950000,
+        habitaciones: 2,
+        banos: 2,
+        area: 62,
+        sala: "Sala para descansar y compartir en familia.",
+        comedor: "Espacio integrado para organizar el comedor.",
+        cocina: "Cocina con espacio para preparar alimentos.",
+        ropas: "Zona para lavar y secar ropa; detalles por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Vivienda de dos habitaciones y dos baños, adecuada para una pareja o una familia pequeña.",
+        imagen: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    3: {
+        nombre: "Apartaestudio en el Centro",
+        zona: "Centro, Medellín",
+        tipo: "Apartaestudio",
+        precio: 680000,
+        habitaciones: 1,
+        banos: 1,
+        area: 30,
+        sala: "Espacio compacto para descansar.",
+        comedor: "Puede integrarse con el espacio principal.",
+        cocina: "Cocina compacta para las actividades diarias.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartaestudio de tamaño práctico para una persona que busca una vivienda funcional.",
+        imagen: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    4: {
+        nombre: "Apartamento en Envigado",
+        zona: "Envigado, Antioquia",
+        tipo: "Familiar",
+        precio: 1100000,
+        habitaciones: 2,
+        banos: 1,
+        area: 55,
+        sala: "Sala para descansar y recibir visitas.",
+        comedor: "Espacio para una mesa de comedor.",
+        cocina: "Cocina funcional para preparar alimentos.",
+        ropas: "Distribución de la zona de ropas por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartamento con dos habitaciones y espacios para las actividades cotidianas del hogar.",
+        imagen: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    5: {
+        nombre: "Apartamento económico en Robledo",
+        zona: "Robledo, Medellín",
+        tipo: "Familiar",
+        precio: 720000,
+        habitaciones: 2,
+        banos: 1,
+        area: 42,
+        sala: "Sala sencilla para descansar.",
+        comedor: "Espacio para un comedor pequeño.",
+        cocina: "Cocina básica para preparar las comidas.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Opción de vivienda económica con dos habitaciones para quienes buscan cuidar su presupuesto.",
+        imagen: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    6: {
+        nombre: "Apartamento para dos personas",
+        zona: "La Floresta, Medellín",
+        tipo: "Dos personas",
+        precio: 850000,
+        habitaciones: 1,
+        banos: 1,
+        area: 38,
+        sala: "Espacio para sofá y zona de descanso.",
+        comedor: "Lugar para una mesa pequeña.",
+        cocina: "Cocina funcional.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Vivienda compacta para una pareja o una persona que necesita un espacio cómodo.",
+        imagen: "https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    7: {
+        nombre: "Apartamento familiar en Castilla",
+        zona: "Castilla, Medellín",
+        tipo: "Familiar",
+        precio: 1450000,
+        habitaciones: 3,
+        banos: 2,
+        area: 75,
+        sala: "Sala con espacio para compartir en familia.",
+        comedor: "Espacio para un comedor familiar.",
+        cocina: "Cocina con área de preparación de alimentos.",
+        ropas: "Distribución de la zona de ropas por confirmar.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartamento con tres habitaciones y dos baños, pensado para una familia que necesita más espacio.",
+        imagen: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
+    },
+
+    8: {
+        nombre: "Apartaestudio en Buenos Aires",
+        zona: "Buenos Aires, Medellín",
+        tipo: "Apartaestudio",
+        precio: 750000,
+        habitaciones: 1,
+        banos: 1,
+        area: 32,
+        sala: "Espacio integrado para descansar.",
+        comedor: "Zona pequeña para comer.",
+        cocina: "Cocina compacta.",
+        ropas: "Por confirmar con el propietario.",
+        balcon: "Por confirmar con el propietario.",
+        parqueadero: "Por confirmar con el propietario.",
+        servicios: "Servicios públicos y su costo por confirmar.",
+        descripcion: "Apartaestudio práctico para una persona o una pareja que busca un lugar funcional.",
+        imagen: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=85"
+    }
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+    const contenedor = document.getElementById("detalleApartamento");
+
+    if (!contenedor) {
+        return;
+    }
+
+    const parametros = new URLSearchParams(window.location.search);
+    const id = parametros.get("id");
+    const apartamento = apartamentos[id];
+
+    
+    `;
+});
+
+
+});

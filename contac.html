@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | SkyHome</title>
+    <link rel="stylesheet" href="/css/regreso.css">
+    <script src="/js/java.scrip.html" defer></script>
+</head>
+<body>
+
+    <header class="encabezado">
+        <a href="index.html" class="logo">
+            <span>SKYHOME</span>
+            <small>HOGARES PARA TI</small>
+        </a>
+
+        <nav class="navegacion">
+             <a href="/js/js.regreso/skyhome.html">Inicio</a>
+            <a href="/js/js.regreso/apar.html" class="activo">Apartamentos</a>
+            <a href="/js/js.regreso/bene.html">Beneficios</a>
+            <a href="/js/js.regreso/contac.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner-secundario">
+            <p class="subtitulo">ESTAMOS PARA AYUDARTE</p>
+            <h1>Hablemos de tu próximo hogar</h1>
+            <p>Escríbenos si tienes dudas sobre nuestros apartamentos.</p>
+        </section>
+
+        <section class="contacto-contenedor">
+            <div class="contacto-informacion">
+                <p class="subtitulo">CONTÁCTANOS</p>
+                <h2>Estamos aquí para orientarte.</h2>
+                <p>
+                    Cuéntanos qué tipo de apartamento estás buscando
+                    y te ayudaremos a consultar las opciones disponibles.
+                </p>
+
+                <a href="https://wa.me/573000000000"
+                   class="boton-dorado"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    ESCRIBIR POR WHATSAPP
+                </a>
+            </div>
+
+            <form id="formContacto" class="formulario-contacto">
+                <label for="nombre">Nombre completo</label>
+                <input id="nombre" name="nombre" type="text"
+                       placeholder="Escribe tu nombre" required>
+
+                <label for="correo">Correo electrónico</label>
+                <input id="correo" name="correo" type="email"
+                       placeholder="tucorreo@ejemplo.com" required>
+
+                <label for="mensaje">¿Qué apartamento buscas?</label>
+                <textarea id="mensaje" name="mensaje" rows="5"
+                          placeholder="Cuéntanos qué necesitas..."
+                          required></textarea>
+
+                <button type="submit" class="boton-dorado">
+                    PREPARAR MENSAJE
+                </button>
+
+                <p id="respuestaContacto" class="respuesta-formulario"
+                   role="status"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <a href="index.html" class="logo logo-pie">
+            <span>SKYHOME</span>
+            <small>HOGARES PARA TI</small>
+        </a>
+        <p>© 2026 SkyHome</p>
+    </footer>
+
+    <a href="https://wa.me/573000000000"
+       class="whatsapp"
+       target="_blank"
+       rel="noopener noreferrer">
+        <span>✆</span> WhatsApp
+    </a>
+
+</body>
+</html>

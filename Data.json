@@ -1,0 +1,151 @@
+{
+  "administradores": [
+    {
+      "id_admin": 1,
+      "nombre": "Admin SkyHome",
+      "correo": "admin@skyhome.com",
+      "password": "admin123",
+      "nivel_acceso": "SuperAdmin"
+    }
+  ],
+
+  "clientes": [
+    {
+      "id_cliente": 1,
+      "nombre_completo": "Juan Pérez",
+      "correo": "juan.perez@email.com",
+      "telefono": "3001234567",
+      "password": "password123",
+      "fecha_registro": "2026-09-02T10:00:00Z"
+    }
+  ],
+
+  "ubicaciones": [
+    {
+      "id_ubicacion": 1,
+      "ciudad": "Medellín",
+      "sector": "Buenos Aires",
+      "direccion": "Carrera 15 # 48-20",
+      "referencia": "Estación Ensisheim-Pinal"
+    },
+    {
+      "id_ubicacion": 2,
+      "ciudad": "Medellín",
+      "sector": "El Poblado",
+      "direccion": "Calle 10 # 30-15",
+      "referencia": "Cerca al Parque Lleras"
+    },
+    {
+      "id_ubicacion": 3,
+      "ciudad": "Envigado",
+      "sector": "Zúñiga",
+      "direccion": "Calle 25 Sur # 42-10",
+      "referencia": "Sector Residencial Tranquilo"
+    }
+  ],
+
+  "apartamentos": [
+    {
+      "id_apartamento": "fam-1",
+      "id_ubicacion": 1,
+      "titulo": "SkyHome Ensisheim Deluxe",
+      "tipo": "Familiar amplio",
+      "precio": 2200000,
+      "habitaciones": 3,
+      "banos": 2,
+      "area_m2": 85,
+      "piso": "Piso 6",
+      "estrato": 4,
+      "parqueadero": "1 Cubierto",
+      "descripcion": "Excelente apartamento ubicado justo frente a la Estación Ensisheim-Pinal. Cuenta con gran iluminación natural, acabados modernos y fácil acceso al transporte público.",
+      "imagen_url": "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80"
+    },
+    {
+      "id_apartamento": "est-1",
+      "id_ubicacion": 2,
+      "titulo": "Loft Ejecutivo Poblado",
+      "tipo": "Apto Estudio",
+      "precio": 1800000,
+      "habitaciones": 1,
+      "banos": 1,
+      "area_m2": 45,
+      "piso": "Piso 4",
+      "estrato": 5,
+      "parqueadero": "1 Moto/Auto",
+      "descripcion": "Apartaestudio ideal para profesionales o personas independientes. Cerca de zonas gastronómicas, comerciales y de negocios.",
+      "imagen_url": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80"
+    },
+    {
+      "id_apartamento": "dob-1",
+      "id_ubicacion": 3,
+      "titulo": "Suite Familiar Zúñiga",
+      "tipo": "Familiar Mediano",
+      "precio": 2400000,
+      "habitaciones": 2,
+      "banos": 2,
+      "area_m2": 75,
+      "piso": "Piso 8",
+      "estrato": 4,
+      "parqueadero": "1 Cubierto",
+      "descripcion": "Inmueble con excelente distribución, balcón con vista a la ciudad y zonas comunes completas dentro de la unidad residencial.",
+      "imagen_url": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80"
+    }
+  ],
+
+  "servicios": [
+    {
+      "id_servicio": 1,
+      "id_apartamento": "fam-1",
+      "nombre_servicio": "Frente a Estación Ensisheim-Pinal"
+    },
+    {
+      "id_servicio": 2,
+      "id_apartamento": "fam-1",
+      "nombre_servicio": "Servicio de acarreos disponible"
+    },
+    {
+      "id_servicio": 3,
+      "id_apartamento": "fam-1",
+      "nombre_servicio": "Seguridad 24/7"
+    },
+    {
+      "id_servicio": 4,
+      "id_apartamento": "fam-1",
+      "nombre_servicio": "Balcón panorámico"
+    },
+    {
+      "id_servicio": 5,
+      "id_apartamento": "est-1",
+      "nombre_servicio": "Gimnasio equipado"
+    },
+    {
+      "id_servicio": 6,
+      "id_apartamento": "est-1",
+      "nombre_servicio": "Zona Co-working"
+    },
+    {
+      "id_servicio": 7,
+      "id_apartamento": "dob-1",
+      "nombre_servicio": "Piscina climatizada"
+    },
+    {
+      "id_servicio": 8,
+      "id_apartamento": "dob-1",
+      "nombre_servicio": "Zona BBQ"
+    }
+  ],
+
+  "reservas": [
+    {
+      "id_reserva": 1,
+      "id_cliente": 1,
+      "id_apartamento": "fam-1",
+      "nombre_visitante": "Juan Pérez",
+      "telefono_visitante": "3001234567",
+      "fecha_visita": "2026-09-10",
+      "hora_visita": "10:00 AM",
+      "estado": "Confirmada",
+      "fecha_creacion": "2026-09-02T12:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,644 @@
+
+/* ===== CONFIGURACIÓN GENERAL ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --fondo: #101010;
+    --fondo-tarjeta: #191919;
+    --blanco: #f5f3ef;
+    --gris: #b7b7b7;
+    --dorado: #d5c17d;
+    --borde: #464646;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--fondo);
+    color: var(--blanco);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+/* ===== BARRA SUPERIOR ===== */
+
+.encabezado {
+    min-height: 88px;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    background: #101010;
+    border-bottom: 1px solid #292929;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    letter-spacing: 3px;
+    flex-shrink: 0;
+}
+
+.logo span {
+    font-size: 23px;
+    font-weight: 700;
+}
+
+.logo small {
+    color: var(--dorado);
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 5px;
+}
+
+.navegacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 26px;
+}
+
+.navegacion a {
+    color: #d0d0d0;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    transition: color 0.25s;
+}
+
+.navegacion a:hover,
+.navegacion a.activo {
+    color: var(--dorado);
+}
+
+/* ===== PORTADA DEL INICIO ===== */
+
+.portada {
+    min-height: 610px;
+    height: 78vh;
+    max-height: 850px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 70px 10%;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.80),
+            rgba(0, 0, 0, 0.35),
+            rgba(0, 0, 0, 0.10)
+        ),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=90")
+        center 55% / cover no-repeat;
+}
+
+.portada-contenido {
+    max-width: 650px;
+}
+
+.subtitulo {
+    color: var(--dorado);
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.portada h1 {
+    font-size: clamp(38px, 5vw, 66px);
+    line-height: 1.12;
+    font-weight: 500;
+    margin-bottom: 24px;
+}
+
+.portada-texto {
+    max-width: 480px;
+    color: #dedede;
+    font-size: 15px;
+    margin-bottom: 32px;
+}
+
+.indicador-portada {
+    position: absolute;
+    right: 7%;
+    bottom: 28px;
+    color: white;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* ===== BOTONES ===== */
+
+.boton-dorado {
+    display: inline-block;
+    background: var(--dorado);
+    border: 1px solid var(--dorado);
+    color: #151515;
+    padding: 13px 23px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.boton-dorado:hover {
+    background: transparent;
+    color: var(--dorado);
+}
+
+.boton-borde {
+    display: block;
+    padding: 11px 12px;
+    border: 1px solid var(--dorado);
+    color: var(--dorado);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: 0.25s;
+}
+
+.boton-borde:hover {
+    background: var(--dorado);
+    color: #111;
+}
+
+/* ===== PRESENTACIÓN DE SKYHOME ===== */
+
+.sobre-nosotros {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 95px 25px 100px;
+    text-align: center;
+}
+
+.sobre-nosotros h2,
+.introduccion h2,
+.contacto-informacion h2 {
+    font-size: clamp(28px, 4vw, 43px);
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 22px;
+}
+
+.linea-dorada {
+    width: 55px;
+    height: 2px;
+    background: var(--dorado);
+    margin: 25px auto;
+}
+
+.descripcion {
+    max-width: 730px;
+    margin: 0 auto 25px;
+    color: var(--gris);
+    font-size: 14px;
+}
+
+.enlace-elegante {
+    display: inline-block;
+    margin-top: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--dorado);
+    color: var(--dorado);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+}
+
+/* ===== FRANJA CON FOTOGRAFÍA ===== */
+
+.franja-imagen {
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 50px 20px;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.70)),
+        url("https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.franja-imagen h2 {
+    font-size: clamp(30px, 4vw, 46px);
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+/* ===== BANNERS DE PÁGINAS SECUNDARIAS ===== */
+
+.banner-secundario {
+    padding: 95px 20px;
+    text-align: center;
+    border-bottom: 1px solid #303030;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.82)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85")
+        center / cover no-repeat;
+}
+
+.banner-secundario h1 {
+    font-size: clamp(30px, 4vw, 48px);
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.banner-secundario > p:last-child {
+    color: #d1d1d1;
+    font-size: 14px;
+}
+
+.banner-apartamentos {
+    padding-top: 115px;
+    padding-bottom: 115px;
+}
+
+/* ===== LISTADO DE APARTAMENTOS ===== */
+
+.seccion-apartamentos {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 65px 25px 90px;
+}
+
+.introduccion {
+    max-width: 650px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.introduccion > p:last-child {
+    color: var(--gris);
+    font-size: 14px;
+}
+
+.filtros {
+    display: flex;
+    gap: 12px;
+    margin: 0 auto 35px;
+    max-width: 800px;
+}
+
+.filtros input,
+.filtros select {
+    min-width: 0;
+    flex: 1;
+    padding: 13px;
+    background: #191919;
+    border: 1px solid var(--borde);
+    color: var(--blanco);
+    outline: none;
+}
+
+.filtros input:focus,
+.filtros select:focus {
+    border-color: var(--dorado);
+}
+
+.filtros option {
+    background: #191919;
+}
+
+.rejilla-apartamentos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.tarjeta-apartamento {
+    background: var(--fondo-tarjeta);
+    border: 1px solid #555;
+    padding: 10px;
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.tarjeta-apartamento:hover {
+    border-color: var(--dorado);
+    transform: translateY(-3px);
+}
+
+.tarjeta-apartamento > img {
+    height: 260px;
+    object-fit: cover;
+}
+
+.contenido-tarjeta {
+    padding: 18px 8px 8px;
+}
+
+.contenido-tarjeta .subtitulo {
+    font-size: 9px;
+    margin-bottom: 8px;
+}
+
+.contenido-tarjeta h3 {
+    font-size: 21px;
+    line-height: 1.3;
+    margin-bottom: 12px;
+}
+
+.descripcion-tarjeta {
+    color: var(--gris);
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.detalles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    border-top: 1px solid #383838;
+    padding: 13px 0;
+    color: #dedede;
+    font-size: 12px;
+}
+
+.precio {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 4px 0 18px;
+}
+
+.precio small {
+    font-size: 12px;
+    color: var(--gris);
+    font-weight: 400;
+}
+
+.sin-resultados {
+    color: var(--gris);
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* ===== BENEFICIOS ===== */
+
+.rejilla-beneficios {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.beneficio {
+    padding: 30px;
+    border: 1px solid var(--borde);
+    background: var(--fondo-tarjeta);
+}
+
+.icono-beneficio {
+    display: inline-block;
+    color: var(--dorado);
+    font-size: 32px;
+    margin-bottom: 14px;
+}
+
+.beneficio h2 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.beneficio p {
+    color: var(--gris);
+    font-size: 14px;
+}
+
+/* ===== CONTACTO ===== */
+
+.contacto-contenedor {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 75px 25px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 55px;
+}
+
+.contacto-informacion > p:not(.subtitulo) {
+    color: var(--gris);
+    margin-bottom: 28px;
+    font-size: 14px;
+}
+
+.formulario-contacto {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.formulario-contacto label {
+    font-size: 12px;
+    color: #dedede;
+    margin-top: 8px;
+}
+
+.formulario-contacto input,
+.formulario-contacto textarea {
+    width: 100%;
+    background: #191919;
+    border: 1px solid var(--borde);
+    color: var(--blanco);
+    padding: 13px;
+    outline: none;
+    resize: vertical;
+}
+
+.formulario-contacto input:focus,
+.formulario-contacto textarea:focus {
+    border-color: var(--dorado);
+}
+
+.formulario-contacto .boton-dorado {
+    margin-top: 12px;
+}
+
+.respuesta-formulario {
+    color: var(--dorado);
+    font-size: 13px;
+}
+
+/* ===== PIE DE PÁGINA ===== */
+
+.pie-pagina {
+    padding: 35px 7%;
+    background: #0b0b0b;
+    border-top: 1px solid #303030;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.logo-pie span {
+    font-size: 18px;
+}
+
+.pie-pagina > p {
+    color: var(--gris);
+    font-size: 11px;
+}
+
+/* ===== BOTÓN WHATSAPP ===== */
+
+.whatsapp {
+    position: fixed;
+    z-index: 1000;
+    right: 22px;
+    bottom: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: #168b4b;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.whatsapp:hover {
+    background: #106d3a;
+}
+
+.whatsapp span {
+    font-size: 20px;
+}
+
+/* ===== DISEÑO PARA CELULARES ===== */
+
+@media (max-width: 760px) {
+    .encabezado {
+        flex-direction: column;
+        padding: 20px 15px;
+        gap: 20px;
+    }
+
+    .navegacion {
+        gap: 13px 18px;
+    }
+
+    .navegacion a {
+        font-size: 10px;
+    }
+
+    .portada {
+        min-height: 540px;
+        height: 70vh;
+        padding: 45px 7%;
+        background-position: center;
+    }
+
+    .portada h1 {
+        font-size: 40px;
+    }
+
+    .sobre-nosotros {
+        padding: 65px 22px;
+    }
+
+    .rejilla-apartamentos,
+    .rejilla-beneficios,
+    .contacto-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .filtros {
+        flex-direction: column;
+    }
+
+    .tarjeta-apartamento > img {
+        height: 230px;
+    }
+
+    .contacto-contenedor {
+        gap: 35px;
+    }
+
+    .pie-pagina {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .banner-secundario {
+        padding: 70px 20px;
+    }
+
+    .whatsapp {
+        right: 12px;
+        bottom: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+}/* Logo y botón de reservas */
+.marca-skyhome {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.boton-reservas {
+    display: inline-block;
+    padding: 7px 17px;
+    border: 1px solid var(--dorado);
+    color: var(--dorado);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.25s;
+}
+
+.boton-reservas:hover {
+    background: var(--dorado);
+    color: #111;
+}
+
+@media (max-width: 760px) {
+    .marca-skyhome {
+        align-items: center;
+    }
+}

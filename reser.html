@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas | SkyHome</title>
+    <link rel="stylesheet" href="/css/regreso.css">
+    <script src="/js/java.scrip.html" defer></script>
+</head>
+<body>
+
+    <header class="encabezado">
+        <div class="marca-skyhome">
+            <a href="index.html" class="logo">
+                <span>SKYHOME</span>
+                <small>HOGARES PARA TI</small>
+            </a>
+            <a href="reservas.html" class="boton-reservas">RESERVAS</a>
+        </div>
+
+        <nav class="navegacion">
+            <a href="/js/js.regreso/skyhome.html">Inicio</a>
+            <a href="/js/js.regreso/apar.html" class="activo">Apartamentos</a>
+            <a href="/js/js.regreso/bene.html">Beneficios</a>
+            <a href="/js/js.regreso/contac.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner-secundario">
+            <p class="subtitulo">TU PRÓXIMO HOGAR</p>
+            <h1>Solicita tu reserva</h1>
+            <p>Cuéntanos qué apartamento te interesa.</p>
+        </section>
+
+        <section class="contacto-contenedor">
+            <div class="contacto-informacion">
+                <p class="subtitulo">RESERVAS SKYHOME</p>
+                <h2>Comienza aquí.</h2>
+                <p>
+                    Selecciona el apartamento que te interesa y las
+                    fechas que deseas consultar. Te ayudaremos a verificar
+                    su disponibilidad.
+                </p>
+                <a href="/js/js.regreso/apar.html" class="enlace-elegante">
+                    VER APARTAMENTOS →
+                </a>
+            </div>
+
+            <form id="formReserva" class="formulario-contacto">
+                <label for="nombreReserva">Nombre completo</label>
+                <input id="nombreReserva" name="nombre" type="text"
+                    placeholder="Tu nombre" required>
+
+                <label for="apartamentoReserva">Apartamento</label>
+                <select id="apartamentoReserva" name="apartamento" required>
+                    <option value="">Selecciona un apartamento</option>
+                    <option>Apartamento familiar - Laureles</option>
+                    <option>Apartamento moderno - Belén</option>
+                    <option>Apartaestudio - Centro</option>
+                    <option>Apartamento luminoso - Envigado</option>
+                </select>
+
+                <label for="fechaEntrada">Fecha de entrada</label>
+                <input id="fechaEntrada" name="entrada"
+                    type="date" required>
+
+                <label for="fechaSalida">Fecha de salida</label>
+                <input id="fechaSalida" name="salida"
+                    type="date" required>
+
+                <label for="personasReserva">Número de personas</label>
+                <input id="personasReserva" name="personas"
+                    type="number" min="1" max="15" value="1" required>
+
+                <label for="telefonoReserva">Número de contacto</label>
+                <input id="telefonoReserva" name="telefono"
+                    type="tel" placeholder="Tu número de teléfono" required>
+
+                <button type="submit" class="boton-dorado">
+                    SOLICITAR RESERVA
+                </button>
+
+                <p id="respuestaReserva" class="respuesta-formulario"
+                    role="status"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <a href="index.html" class="logo logo-pie">
+            <span>SKYHOME</span>
+            <small>HOGARES PARA TI</small>
+        </a>
+        <p>© 2026 SkyHome</p>
+    </footer>
+
+    <a href="https://wa.me/573000000000"
+       class="whatsapp"
+       target="_blank"
+       rel="noopener noreferrer">
+        <span>✆</span> WhatsApp
+    </a>
+
+</body>
+</html>

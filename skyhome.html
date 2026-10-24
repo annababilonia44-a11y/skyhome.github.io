@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Apartamentos | SkyHome</title>
+
+    <link rel="stylesheet" href="/css/regreso.css">
+    <script src="/js/java.scrip.html" defer></script>
+</head>
+<body>
+
+    <div class="marca-skyhome">
+    <a href="index.html" class="logo">
+        <span>SKYHOME</span>
+        <small>HOGARES PARA TI</small>
+    </a>
+
+    <a href="/js/js.regreso/reser.html" class="boton-reservas">
+        RESERVAS
+    </a>
+</div>
+
+        <nav class="navegacion">
+            <a href="/js/js.regreso/skyhome.html">Inicio</a>
+            <a href="/js/js.regreso/apar.html" class="activo">Apartamentos</a>
+            <a href="/js/js.regreso/bene.html">Beneficios</a>
+            <a href="/js/js.regreso/contac.html">Contacto</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner-secundario banner-apartamentos">
+            <p class="subtitulo">ESPACIOS PARA TI</p>
+            <h1>Nuestros apartamentos</h1>
+            <p>Explora opciones para encontrar tu próximo hogar.</p>
+        </section>
+
+        <section class="seccion-apartamentos">
+            <div class="introduccion">
+                <p class="subtitulo">DESCUBRE TU ESPACIO</p>
+                <h2>Encuentra el lugar ideal</h2>
+                <p>
+                    Conoce las características de cada apartamento
+                    y elige el que mejor se adapte a ti.
+                </p>
+            </div>
+
+            <div class="filtros">
+                <input
+                    type="search"
+                    id="buscarApartamento"
+                    placeholder="Buscar por zona o apartamento..."
+                    aria-label="Buscar apartamentos"
+                >
+
+                <select id="filtroTipo" aria-label="Filtrar por tipo">
+                    <option value="todos">Todos los tipos</option>
+                    <option value="apartamento">Apartamento</option>
+                    <option value="apartaestudio">Apartaestudio</option>
+                    <option value="familiar">Familiar</option>
+                </select>
+            </div>
+
+            <div class="rejilla-apartamentos">
+
+                <article class="tarjeta-apartamento"
+                    data-tipo="familiar"
+                    data-busqueda="apartamento familiar laureles medellin">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+                        alt="Sala moderna de apartamento"
+                    >
+
+                    <div class="contenido-tarjeta">
+                        <p class="subtitulo">MEDELLÍN · LAURELES</p>
+                        <h3>Apartamento familiar</h3>
+                        <p class="descripcion-tarjeta">
+                            Espacio cómodo con sala, cocina y ambientes
+                            ideales para compartir.
+                        </p>
+
+                        <div class="detalles">
+                            <span>🛏 2 habitaciones</span>
+                            <span>🛁 1 baño</span>
+                        </div>
+
+                        <p class="precio">
+                            $1.200.000 <small>/ mes</small>
+                        </p>
+
+                        <a class="boton-borde"
+                           href="/js/js.regreso/apar.html">
+                            CONSULTAR DISPONIBILIDAD
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-apartamento"
+                    data-tipo="apartamento"
+                    data-busqueda="apartamento belen medellin moderno">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85"
+                        alt="Interior luminoso de apartamento"
+                    >
+
+                    <div class="contenido-tarjeta">
+                        <p class="subtitulo">MEDELLÍN · BELÉN</p>
+                        <h3>Apartamento moderno</h3>
+                        <p class="descripcion-tarjeta">
+                            Un espacio acogedor, con iluminación natural
+                            y diseño contemporáneo.
+                        </p>
+
+                        <div class="detalles">
+                            <span>🛏 2 habitaciones</span>
+                            <span>🛁 2 baños</span>
+                        </div>
+
+                        <p class="precio">
+                            $950.000 <small>/ mes</small>
+                        </p>
+
+                        <a class="boton-borde"
+                           href="contacto.html">
+                            CONSULTAR DISPONIBILIDAD
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-apartamento"
+                    data-tipo="apartaestudio"
+                    data-busqueda="apartaestudio centro medellin pequeño">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1000&q=85"
+                        alt="Habitación acogedora y moderna"
+                    >
+
+                    <div class="contenido-tarjeta">
+                        <p class="subtitulo">MEDELLÍN · CENTRO</p>
+                        <h3>Apartaestudio acogedor</h3>
+                        <p class="descripcion-tarjeta">
+                            Una opción práctica para una persona
+                            o una pareja.
+                        </p>
+
+                        <div class="detalles">
+                            <span>🛏 1 habitación</span>
+                            <span>🛁 1 baño</span>
+                        </div>
+
+                        <p class="precio">
+                            $680.000 <small>/ mes</small>
+                        </p>
+
+                        <a class="boton-borde"
+                           href="contacto.html">
+                            CONSULTAR DISPONIBILIDAD
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+
+            <p id="sinResultados" class="sin-resultados" hidden>
+                No encontramos apartamentos con esa búsqueda.
+            </p>
+        </section>
+    </main>
+
+    <footer class="pie-pagina">
+        <a href="index.html" class="logo logo-pie">
+            <span>SKYHOME</span>
+            <small>HOGARES PARA TI</small>
+        </a>
+        <p>© 2026 SkyHome</p>
+    </footer>
+
+    <a href="https://wa.me/573000000000"
+       class="whatsapp"
+       target="_blank"
+       rel="noopener noreferrer">
+        <span>✆</span> WhatsApp
+    </a>
+
+</body>
+</html>
